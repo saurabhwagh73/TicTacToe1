@@ -3,18 +3,18 @@ package com.scaler.tictactoe.Controller;
 
 import com.scaler.tictactoe.Exceptions.BotCountException;
 import com.scaler.tictactoe.Exceptions.PlayerCountException;
+import com.scaler.tictactoe.Exceptions.uniqueSymbolException;
 import com.scaler.tictactoe.Models.Game;
 import com.scaler.tictactoe.Models.GameState;
 import com.scaler.tictactoe.Models.Player;
 import com.scaler.tictactoe.Strategy.winning.WinningStrategy;
 
 import java.util.List;
-
 public class GameController {
 
     public Game startGame(List<Player> players,
                           List<WinningStrategy> winningStrategies,
-                          int dimension) throws PlayerCountException, BotCountException {
+                          int dimension) throws PlayerCountException, BotCountException, uniqueSymbolException {
 
         return Game
                 .getBuilder()

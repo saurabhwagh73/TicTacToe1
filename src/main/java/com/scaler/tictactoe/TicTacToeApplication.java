@@ -3,22 +3,19 @@ package com.scaler.tictactoe;
 import com.scaler.tictactoe.Controller.GameController;
 import com.scaler.tictactoe.Exceptions.BotCountException;
 import com.scaler.tictactoe.Exceptions.PlayerCountException;
+import com.scaler.tictactoe.Exceptions.uniqueSymbolException;
 import com.scaler.tictactoe.Models.*;
 import com.scaler.tictactoe.Strategy.winning.ColWinningStrategy;
 import com.scaler.tictactoe.Strategy.winning.DiagonalWinningStrategy;
 import com.scaler.tictactoe.Strategy.winning.RowWinningStrategy;
 import com.scaler.tictactoe.Strategy.winning.WinningStrategy;
-import org.springframework.boot.SpringApplication;
-import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
-
-
 public class TicTacToeApplication {
 
-    public static void main(String[] args) throws PlayerCountException, BotCountException {
+    public static void main(String[] args) throws PlayerCountException, BotCountException, uniqueSymbolException {
         GameController gameController = new GameController();
         Scanner scanner = new Scanner(System.in);
 
@@ -66,7 +63,6 @@ public class TicTacToeApplication {
         } else {
             System.out.println("Game has drawn");
         }
-
 
     }
 

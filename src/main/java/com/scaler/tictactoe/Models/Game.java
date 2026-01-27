@@ -3,7 +3,9 @@ package com.scaler.tictactoe.Models;
 import com.scaler.tictactoe.Strategy.winning.WinningStrategy;
 import com.scaler.tictactoe.Exceptions.*;
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 public class Game {
     private List<Player> players;
@@ -132,40 +134,11 @@ public class Game {
             return this;
         }
 
-        public Game build() throws PlayerCountException, BotCountException {
-            validate();
+        public Game build() throws PlayerCountException, BotCountException, uniqueSymbolException {
+            GameValidate isvalidGame=new GameValidate(dimension,players);
+            isvalidGame.validate();
 
             return new Game(players, dimension, winningStrategies);
-        }
-
-        // TODO: Move this logic to a separate class
-        public void validate() throws BotCountException, PlayerCountException {
-            validateBotCount();
-            validatePlayerCount();
-            validateUniqueSymbols();
-        }
-
-        public void validateBotCount() throws BotCountException {
-            int botCount = 0;
-            for(Player player: players) {
-                if(player.getPlayerType().equals(PlayerType.Bot)) {
-                    botCount += 1;
-                }
-            }
-
-            if(botCount > 1) {
-                throw new BotCountException();
-            }
-        }
-
-        public void validatePlayerCount() throws PlayerCountException {
-            if(players.size() != dimension - 1) {
-                throw new PlayerCountException();
-            }
-        }
-
-        public void validateUniqueSymbols() {
-            // TODO: Complete this
         }
     }
 
