@@ -152,7 +152,8 @@ public class Game {
 
         Move move = currentMovePlayer.makeMove(board);
 
-        if(!validateMove(move)) {
+        MoveValidate moveValidate=new MoveValidate(board);
+        if(!moveValidate.validateMove(move)) {
             System.out.println("Invalid move. Please try again.");
             return;
         }
@@ -176,22 +177,6 @@ public class Game {
         } else if(moves.size() == board.getSize() * board.getSize()) {
             gameState = GameState.DRAW;
         }
-    }
-
-    // TODO: Move this to a separate class
-    public boolean validateMove(Move move) {
-        int row = move.getCell().getRow();
-        int col = move.getCell().getCol();
-
-        if (row >= board.getSize() || col >= board.getSize()) {
-            return false;
-        }
-
-        if (!board.getBoard().get(row).get(col).getCellState().equals(CellState.Empty)) {
-            return false;
-        }
-
-        return true;
     }
 
     private boolean checkWinner(Move move) {
@@ -224,5 +209,4 @@ public class Game {
         nextPlayerIndex -= 1;
         nextPlayerIndex = (nextPlayerIndex + players.size()) % players.size();
     }
-
 }
