@@ -30,7 +30,7 @@ public class TicTacToeApplication {
                 new Bot(2L,
                         "Rohit",
                         new Symbol('O'),
-                        BotDifficultyLevel.EASY)
+                        BotDifficultyLevel.MEDIUM)
         );
 
         List<WinningStrategy> winningStrategies = new ArrayList<>();
