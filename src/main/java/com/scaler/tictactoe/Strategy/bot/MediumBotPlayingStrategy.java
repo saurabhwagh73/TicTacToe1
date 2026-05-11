@@ -31,8 +31,8 @@ public class MediumBotPlayingStrategy implements BotPlayingStrategy {
     }
 
     private Move checkreverseManner(List<List<Cell>> boards){
-        for(int i=0;i<boards.size();i++){
-            for(int j=0;j<boards.get(i).size();j++){
+        for(int i=boards.size()-1;i>=0;i--){
+            for(int j=boards.get(i).size()-1;j>=0;j--){
                 if(boards.get(i).get(j).getCellState().equals(CellState.Empty)){
                     return new Move(boards.get(i).get(j),null);
                 }
